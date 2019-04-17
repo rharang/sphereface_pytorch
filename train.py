@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 
 import torch
 import torch.nn as nn
@@ -11,9 +11,9 @@ import os,sys,cv2,random,datetime
 import argparse
 import numpy as np
 
-from dataset import ImageDataset
-from matlab_cp2tform import get_similarity_transform_for_cv2
-import net_sphere
+from .dataset import ImageDataset
+from .matlab_cp2tform import get_similarity_transform_for_cv2
+from . import net_sphere
 
 
 parser = argparse.ArgumentParser(description='PyTorch sphereface')

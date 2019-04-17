@@ -101,3 +101,6 @@ ENV/
 .mypy_cache/
 
 *.pth
+
+# 2to3 backup files
+*.bak

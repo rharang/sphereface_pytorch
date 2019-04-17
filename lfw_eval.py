@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 
 import torch
 import torch.nn as nn
@@ -12,9 +12,9 @@ import argparse
 import numpy as np
 import zipfile
 
-from dataset import ImageDataset
-from matlab_cp2tform import get_similarity_transform_for_cv2
-import net_sphere
+from .dataset import ImageDataset
+from .matlab_cp2tform import get_similarity_transform_for_cv2
+from . import net_sphere
 
 def alignment(src_img,src_pts):
     ref_pts = [ [30.2946, 51.6963],[65.5318, 51.5014],
@@ -120,7 +120,7 @@ accuracy = []
 thd = []
 folds = KFold(n=6000, n_folds=10, shuffle=False)
 thresholds = np.arange(-1.0, 1.0, 0.005)
-predicts = np.array(map(lambda line:line.strip('\n').split(), predicts))
+predicts = np.array([line.strip('\n').split() for line in predicts])
 for idx, (train, test) in enumerate(folds):
     best_thresh = find_best_threshold(thresholds, predicts[train])
     accuracy.append(eval_acc(best_thresh, predicts[test]))
